@@ -1,16 +1,11 @@
 from kivy.app import App
-from kivy.uix.label import Label
+from Assets.mainscreen import MainScreen
 
 
-class MainApp(App):
+class clickclickApp(App):
     def build(self):
-        label = Label(
-            text="Hello",
-            size_hint=(1, 1),
-            pos_hint={"center_x": 0.2, "center_y": 0.8},
-        )
-        return label
+        return MainScreen()
 
 
 if __name__ == "__main__":
-    MainApp().run()
+    clickclickApp().run()
