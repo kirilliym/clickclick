@@ -1,10 +1,10 @@
 from kivy.app import App
-from Assets.mainscreen import MainScreen
+from Assets.mainwindow import MainWindow
 
 
 class clickclickApp(App):
     def build(self):
-        return MainScreen()
+        return MainWindow()
 
 
 if __name__ == "__main__":
