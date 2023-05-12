@@ -1,0 +1,16 @@
+<Counter>
+    Button:
+        id: test_btn
+        background_color: (0,0,0,0)
+        background_normal: ''
+        text: "test"
+        markup: True
+
+        color_btn: (0,0,255,1)
+
+        canvas.before:
+            Color:
+                rgba: self.color_btn
+            Ellipse:
+                size: self.size
+                pos: self.pos
