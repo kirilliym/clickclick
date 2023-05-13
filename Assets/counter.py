@@ -1,16 +1,16 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.lang import Builder
-
-
-Builder.load_file("Assets/kv/test.kv")
+from Assets.custom_buttons import TestButton
 
 
 class Counter(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.orientation = "vertical"
+
+        self.test_button = TestButton()
+        self.add_widget(self.test_button)
 
         self.counter = Label()
         self.counter.text = "0"
