@@ -1,0 +1,18 @@
+<Counter>
+    canvas.before:
+        Color: # top
+            rgba: (0/255, 0/255, 128/255, 1)
+        Triangle:
+            points: (0, self.size[1], self.size[0], self.size[1], self.size[0]/2, self.size[1]/2)
+        Color: # left
+            rgba: (66/255, 170/255, 255/255, 1)
+        Triangle:
+            points: (0, 0, 0, self.size[1], self.size[0]/2, self.size[1]/2)
+        Color: # right
+            rgba: (0/255 ,191/255, 255/255, 1)
+        Triangle:
+            points: (self.size[0], self.size[1], self.size[0], 0, self.size[0]/2, self.size[1]/2)
+        Color: # bottom
+            rgba: (48/255, 213/255, 200/255, 1)
+        Triangle:
+            points: (0, 0, self.size[0], 0, self.size[0]/2, self.size[1]/2)

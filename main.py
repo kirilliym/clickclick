@@ -2,7 +2,7 @@ import kivy
 from kivy.app import App
 from Assets.mainwindow import MainWindow
 
-kivy.require("2.1.0")
+kivy.require("2.2.0")
 
 
 class clickclickApp(App):

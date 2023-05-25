@@ -1,0 +1,18 @@
+<ClickButton>
+    background_color: (0, 0, 0, 0)
+    color_shadow: (0/255, 0/255, 0/255, 0.5)
+    shadow_slip: (7, -7)
+    pos_hint: {"center_x": 0.5, "center_y": 0.5,}
+    size_hint: (0.5, None)
+    size: (self.width, self.width)
+    canvas.before:
+        Color:
+            rgba: self.color_shadow
+        Ellipse:
+            size: self.size
+            pos: self.pos[0]+self.shadow_slip[0], self.pos[1]+self.shadow_slip[1]
+        Color:
+            rgba: (120/255, 81/255, 169/255, 1)
+        Ellipse:
+            size: self.size
+            pos: self.pos
