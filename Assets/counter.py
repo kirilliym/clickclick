@@ -1,3 +1,4 @@
+from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.lang import Builder
@@ -20,8 +21,8 @@ class Counter(FloatLayout):
         self.texture = Image(source="data/background.png").texture
         self.texture.wrap = "repeat"
         self.texture.uvsize = (
-            self.width / self.texture.width,
-            self.height / self.texture.height,
+            Window.width / self.texture.width,
+            Window.height / self.texture.height,
         )
 
     def plus_1(self, instance):
