@@ -1,4 +1,5 @@
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.image import Image
 from kivy.lang import Builder
 from Assets.custom_buttons import ClickButton
 from Assets.db import CounterDataBase
@@ -15,6 +16,13 @@ class Counter(FloatLayout):
 
         self.click_button = ClickButton(on_press=self.plus_1)
         self.add_widget(self.click_button)
+
+        self.texture = Image(source="data/background.png").texture
+        self.texture.wrap = "repeat"
+        self.texture.uvsize = (
+            self.width / self.texture.width,
+            self.height / self.texture.height,
+        )
 
     def plus_1(self, instance):
         self.count += 1

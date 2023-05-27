@@ -1,27 +1,17 @@
 <Counter>
-    canvas.before:
-        Color: # top
-            rgba: (0/255, 0/255, 128/255, 1)
-        Triangle:
-            points: (0, self.size[1], self.size[0], self.size[1], self.size[0]/2, self.size[1]/2)
-        Color: # left
-            rgba: (66/255, 170/255, 255/255, 1)
-        Triangle:
-            points: (0, 0, 0, self.size[1], self.size[0]/2, self.size[1]/2)
-        Color: # right
-            rgba: (0/255 ,191/255, 255/255, 1)
-        Triangle:
-            points: (self.size[0], self.size[1], self.size[0], 0, self.size[0]/2, self.size[1]/2)
-        Color: # bottom
-            rgba: (48/255, 213/255, 200/255, 1)
-        Triangle:
-            points: (0, 0, self.size[0], 0, self.size[0]/2, self.size[1]/2)
-
+    texture: None
     start_count: None
     count: self.start_count
 
+    canvas.before:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            texture: self.texture
+
     Label:
         text: str(root.count)
-        size_hint: (0.1, 0.1)
+        color: (120/255, 81/255, 169/255, 1)
+        size_hint: (0.2, 0.2)
         pos_hint: {"center_x": 0.5, "center_y": 0.8}
-        font_size: self.width * self.height / 25
+        font_size: (self.width*self.height)**0.5
