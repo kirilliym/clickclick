@@ -13,6 +13,9 @@ class ClickClickApp(App):
     def build(self):
         return self.main_window
 
+    def on_pause(self):
+        self.main_window.counter.save_count()
+
     def on_stop(self):
         self.main_window.counter.save_count()
 
