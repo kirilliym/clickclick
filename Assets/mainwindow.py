@@ -12,4 +12,5 @@ class MainWindow(AnchorLayout):
         self.inside.size_hint = (0.4, 0.4)
         self.add_widget(self.inside)
 
-        self.inside.add_widget(Counter())
+        self.counter = Counter()
+        self.inside.add_widget(self.counter)
