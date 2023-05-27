@@ -1,5 +1,7 @@
+#:import ClickButton Assets.custom_buttons.ClickButton
+
 <Counter>
-    texture: None
+    texture_background: None
     start_count: None
     count: self.start_count
 
@@ -7,7 +9,7 @@
         Rectangle:
             size: self.size
             pos: self.pos
-            texture: self.texture
+            texture: self.texture_background
 
     Label:
         text: str(root.count)
@@ -15,3 +17,6 @@
         size_hint: (0.2, 0.2)
         pos_hint: {"center_x": 0.5, "center_y": 0.8}
         font_size: (self.width*self.height)**0.5
+
+    ClickButton:
+        on_press: root.plus_1()
