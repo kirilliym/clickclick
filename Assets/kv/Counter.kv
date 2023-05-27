@@ -16,3 +16,12 @@
             rgba: (48/255, 213/255, 200/255, 1)
         Triangle:
             points: (0, 0, self.size[0], 0, self.size[0]/2, self.size[1]/2)
+
+    start_count: None
+    count: self.start_count
+
+    Label:
+        text: str(root.count)
+        size_hint: (0.1, 0.1)
+        pos_hint: {"center_x": 0.5, "center_y": 0.8}
+        font_size: self.width * self.height / 25

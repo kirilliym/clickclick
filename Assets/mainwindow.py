@@ -10,4 +10,5 @@ class MainWindow(AnchorLayout):
         self.inside = FloatLayout()
         self.add_widget(self.inside)
 
-        self.inside.add_widget(Counter())
+        self.counter = Counter()
+        self.inside.add_widget(self.counter)
