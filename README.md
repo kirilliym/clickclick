@@ -1,8 +1,8 @@
 # ClickClick
 
----
+***
 ***Python Kivy***
----
+***
 
 Button with counter
 
