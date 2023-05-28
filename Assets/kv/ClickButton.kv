@@ -1,20 +1,23 @@
-<ClickButton>
+<ClickButton@Button>:
+    scale: None
+    color: None,None,None,None
+
     background_color: (0, 0, 0, 0)
-    color_shadow: (0/255, 0/255, 0/255, 0.5)
-    shadow_slip: (1.07, 0.93)
-    pos_hint: {"center_x": 0.5, "center_y": 0.5,}
-    size_hint: (0.5, None)
+    size_hint: (self.scale, None) if self.state == "normal" else (self.scale * 0.99, None)
     size: (self.width, self.width)
+
+    shadow_pos_slip: (self.pos[0]*1.07, self.pos[1]*0.93)
+    shadow_color_slip: (0 / 255, 0 / 255, 0 / 255, 0.52)
 
     canvas.before:
         Color:
-            rgba: self.color_shadow
+            rgba: (0/255, 0/255, 0/255, 0.5) if self.state == "normal" else self.shadow_color_slip
         Ellipse:
             size: self.size
-            pos: self.pos[0]*self.shadow_slip[0], self.pos[1]*self.shadow_slip[1]
+            pos: (self.pos[0]*1.07, self.pos[1]*0.93) if self.state == "normal" else self.shadow_pos_slip
 
         Color:
-            rgba: (120/255, 81/255, 169/255, 1)
+            rgba: self.color
         Ellipse:
             size: self.size
             pos: self.pos
