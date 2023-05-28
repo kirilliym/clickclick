@@ -2,6 +2,7 @@ import kivy
 from kivy.app import App
 from Assets.mainwindow import MainWindow
 
+
 kivy.require("2.2.0")
 
 
