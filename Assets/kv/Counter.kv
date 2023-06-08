@@ -12,11 +12,13 @@
             texture: self.texture_background
 
     Label:
+        markup: True
         text: str(root.count)
         color: (120/255, 81/255, 169/255, 1)
         size_hint: (0.2, 0.2)
         pos_hint: {"center_x": 0.5, "center_y": 0.8}
         font_size: (self.width*self.height)**0.5
+        font_name: "data/ChangaOne-Regular.ttf"
 
     ClickButton:
         color: (120/255, 81/255, 169/255, 1)
