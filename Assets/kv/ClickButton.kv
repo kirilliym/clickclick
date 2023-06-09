@@ -3,19 +3,18 @@
     color: None,None,None,None
 
     background_color: (0, 0, 0, 0)
-    size_hint: (self.scale, None) if self.state == "normal" else (self.scale * 0.99, None)
+    size_hint: (self.scale, None) if self.state == "normal" else (self.scale * 0.98, None)
     size: (self.width, self.width)
 
-    shadow_pos_slip: (self.pos[0]*1.07, self.pos[1]*0.93)
-    shadow_color_slip: (0 / 255, 0 / 255, 0 / 255, 0.52)
+    shadow_pos_slip: (self.pos[0]+self.size[0]*0.03, self.pos[1]-self.size[1]*0.03)
+    shadow_color_slip: (0 / 255, 0 / 255, 0 / 255, 0.55)
 
     canvas.before:
         Color:
             rgba: (0/255, 0/255, 0/255, 0.5) if self.state == "normal" else self.shadow_color_slip
         Ellipse:
             size: self.size
-            pos: (self.pos[0]*1.07, self.pos[1]*0.93) if self.state == "normal" else self.shadow_pos_slip
-
+            pos: (self.pos[0]+self.size[0]*0.05, self.pos[1]-self.size[1]*0.05) if self.state == "normal" else self.shadow_pos_slip
         Color:
             rgba: self.color
         Ellipse:
