@@ -1,22 +1,37 @@
-<ClickButton@Button>:
+#:import Animation kivy.animation.Animation
+
+<ClickButton@Button>
     scale: None
     color: None,None,None,None
-
     background_color: (0, 0, 0, 0)
-    size_hint: (self.scale, None) if self.state == "normal" else (self.scale * 0.98, None)
+    size_hint: (self.scale, None)
     size: (self.width, self.width)
 
-    shadow_pos_slip: (self.pos[0]+self.size[0]*0.03, self.pos[1]-self.size[1]*0.03)
-    shadow_color_slip: (0 / 255, 0 / 255, 0 / 255, 0.55)
+    shadow_offset: 0.07
+    shadow_spread: 0.03
+    shadow_color: (0, 0, 0, 0.5)
 
-    canvas.before:
+    canvas:
         Color:
-            rgba: (0/255, 0/255, 0/255, 0.5) if self.state == "normal" else self.shadow_color_slip
-        Ellipse:
+            rgba: self.shadow_color
+        BoxShadow:
+            pos: self.pos
             size: self.size
-            pos: (self.pos[0]+self.size[0]*0.05, self.pos[1]-self.size[1]*0.05) if self.state == "normal" else self.shadow_pos_slip
+            offset: self.width*self.shadow_offset, -self.width*self.shadow_offset
+            blur_radius: self.width*0.05
+            spread_radius: self.width*self.shadow_spread, self.width*self.shadow_spread
+            border_radius: self.width, self.width, self.width, self.width
         Color:
             rgba: self.color
         Ellipse:
             size: self.size
             pos: self.pos
+
+    on_state:
+        if self.state == "down": Animation(size_hint_x=self.scale * 0.97,
+        shadow_color=(0, 0, 0, 0.55),shadow_offset=0.065,shadow_spread=0.029,
+        d=0.05,t="out_sine",s=1 / 60,).start(root)
+
+        else: Animation(size_hint_x=self.scale,
+        shadow_color=(0, 0, 0, 0.5),shadow_offset=0.07,shadow_spread=0.03,
+        d=0.05,t="out_sine",s=1 / 60,).start(root)
