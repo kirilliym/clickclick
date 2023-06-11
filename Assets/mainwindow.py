@@ -1,9 +1,5 @@
-from kivy.lang import Builder
 from kivy.uix.anchorlayout import AnchorLayout
 from Assets.counter import Counter
-
-
-Builder.load_file("Assets/kv/MainWindow.kv")
 
 
 class MainWindow(AnchorLayout):

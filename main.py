@@ -1,11 +1,9 @@
 import kivy
 from kivy.app import App
-from kivy.core.window import Window
 from Assets.mainwindow import MainWindow
 
 
 kivy.require("2.2.0")
-Window.clearcolor = 187 / 255, 217 / 255, 157 / 255, 1
 
 
 class ClickClickApp(App):
