@@ -12,3 +12,6 @@ class MainWindow(AnchorLayout):
 
         self.counter = Counter()
         self.add_widget(self.counter)
+
+    def SaveData(self):
+        self.counter.save_count()

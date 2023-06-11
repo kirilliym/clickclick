@@ -15,10 +15,10 @@ class ClickClickApp(App):
         return self.main_window
 
     def on_pause(self):
-        self.main_window.counter.save_count()
+        self.main_window.SaveData()
 
     def on_stop(self):
-        self.main_window.counter.save_count()
+        self.main_window.SaveData()
 
 
 if __name__ == "__main__":
