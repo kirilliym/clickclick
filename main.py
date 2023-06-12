@@ -11,6 +11,7 @@ class ClickClickApp(App):
         super(ClickClickApp, self).__init__(**kwargs)
         self.main_window = MainWindow()
 
+
     def build(self):
         return self.main_window
 
@@ -19,6 +20,7 @@ class ClickClickApp(App):
 
     def on_stop(self):
         self.main_window.SaveData()
+
 
 
 if __name__ == "__main__":
