@@ -1,63 +1,28 @@
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from kivy.uix.label import Label
-from Assets.custom_buttons import TestButton
-import sqlite3 as sql
+from kivy.lang import Builder
+from kivy.core.window import Window
+from kivy.uix.image import Image
+from kivy.uix.floatlayout import FloatLayout
+from Assets.db import CounterDataBase
 
 
-class Counter(BoxLayout):
+Builder.load_file("Assets/kv/Counter.kv")
+
+
+class Counter(FloatLayout):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.orientation = "vertical"
+        super(Counter, self).__init__(**kwargs)
 
-        self.test_button = TestButton()
-        self.add_widget(self.test_button)
+        self.start_count = CounterDataBase.db_create()
 
-        connection = sql.connect("database.db")
-        cursor = connection.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS baza (count INT)")
-        connection.commit()
+        self.texture_background = Image(source="data/background.png").texture
+        self.texture_background.wrap = "repeat"
+        self.texture_background.uvsize = (
+            Window.width / self.texture_background.width,
+            Window.height / self.texture_background.height,
+        )
 
-        cursor.execute("SELECT * FROM baza")
-        got = cursor.fetchone()
-
-        if got is None:
-            cursor.execute("INSERT INTO baza(count) VALUES (0)")
-            connection.commit()
-            self.start_count = 0
-        else:
-            self.start_count = got[0]
-
-        connection.close()
-
-        self.counter = Label()
-        self.counter.text = str(self.start_count)
-        self.counter.text_int = self.start_count
-        self.add_widget(self.counter)
-
-        self.calc = BoxLayout()
-        self.calc.orientation = "vertical"
-        self.add_widget(self.calc)
-
-        self.pluss = BoxLayout()
-        self.calc.add_widget(self.pluss)
-
-        self.button_p_1 = Button(text="+1", on_press=self.plus_1)
-        self.pluss.add_widget(self.button_p_1)
-
-    def update_counter(self):
-        self.counter.text = str(self.counter.text_int)
-
-    def plus_1(self, instance):
-        self.counter.text_int += 1
-        self.update_counter()
+    def plus_1(self):
+        self.count += 1
 
     def save_count(self):
-        connection = sql.connect("database.db")
-        cursor = connection.cursor()
-        cursor.execute(
-            "UPDATE baza SET count = ? WHERE count = ?",
-            (self.counter.text_int, self.start_count),
-        )
-        connection.commit()
-        connection.close()
+        CounterDataBase.db_update(self.count, self.start_count)

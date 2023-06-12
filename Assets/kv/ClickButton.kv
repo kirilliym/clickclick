@@ -1,0 +1,37 @@
+#:import Animation kivy.animation.Animation
+
+<ClickButton@Button>
+    scale: None
+    color: None,None,None,None
+    background_color: (0, 0, 0, 0)
+    size_hint: (self.scale, None)
+    size: (self.width, self.width)
+
+    shadow_offset: 0.07
+    shadow_spread: 0.03
+    shadow_color: (0, 0, 0, 0.5)
+
+    canvas:
+        Color:
+            rgba: self.shadow_color
+        BoxShadow:
+            pos: self.pos
+            size: self.size
+            offset: self.width*self.shadow_offset, -self.width*self.shadow_offset
+            blur_radius: self.width*0.05
+            spread_radius: self.width*self.shadow_spread, self.width*self.shadow_spread
+            border_radius: self.width, self.width, self.width, self.width
+        Color:
+            rgba: self.color
+        Ellipse:
+            size: self.size
+            pos: self.pos
+
+    on_state:
+        if self.state == "down": Animation(size_hint_x=self.scale * 0.97,
+        shadow_color=(0, 0, 0, 0.55),shadow_offset=0.065,shadow_spread=0.029,
+        d=0.05,t="out_sine",s=1 / 60,).start(root)
+
+        else: Animation(size_hint_x=self.scale,
+        shadow_color=(0, 0, 0, 0.5),shadow_offset=0.07,shadow_spread=0.03,
+        d=0.05,t="out_sine",s=1 / 60,).start(root)
